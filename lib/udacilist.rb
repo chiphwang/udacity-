@@ -49,7 +49,15 @@ class UdaciList
       print_tables(search_type,@rows)
 end
 
-
+  def change_priority(title,priority)
+        @title=title
+        @priority=priority
+        @items.each do |item|
+          if item.description == @title
+            item.priority = @priority
+          end
+        end
+      end
 
   def add(type, description, options={})
       @type=type

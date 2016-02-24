@@ -1,6 +1,7 @@
 class TodoItem
   include Listable
-  attr_reader :description, :due, :priority ,:type
+  attr_reader :description,:due,:type
+  attr_accessor :priority
 
   @@todos=[]
 
@@ -17,28 +18,6 @@ class TodoItem
  end
 
 
-=begin
-  def format_description
-    "#{@description}".ljust(25)
-  end
-=end
-
-=begin
-  def format_date
-    @due ? @due.strftime("%D") : "No due date"
-  end
-=end
-
-
-=begin
-  def format_priority
-    value = " ⇧" if @priority == "high"
-    value = " ⇨" if @priority == "medium"
-    value = " ⇩" if @priority == "low"
-    value = "" if !@priority
-    return value
-  end
-=end
 
   def details
     format_description(@description,@type) + "due: " +

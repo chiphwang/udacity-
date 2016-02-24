@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'chronic'
 require 'colorize'
 require 'ice_cube'
@@ -49,10 +50,18 @@ new_list.all
 # ------------------------
 new_list.filter("event")
 
+puts " "
+puts " "
+puts "=============================New Features===================================="
+
 # New Feature #1 (search by type and put in a table)
 
 new_list.table_filter("event")
 new_list.table_filter("todo")
 new_list.table_filter("link")
 
-# New Feature #2 (change priortity of a todo)
+
+# New Feature #2 changing priority for a TodoItem
+
+new_list.change_priority("Buy groceries","low")
+new_list.table_filter("todo")
