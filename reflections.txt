@@ -1,0 +1,28 @@
+# What you added to Udacitask 2.0
+# -------------------------------------------------------
+1. What is the gem of your choice and how did you use it?
+
+I used the terminal-table gem to modify the serch for type fucntionality by putting the results in a table. I feel like it made it easier to read.
+
+
+2. Describe the 2 features you added to the project.
+  a) Feature 1... Created a new search by type fucntionality that put the output in tables.
+  b) Feature 2... Added a method in udacilist.rb to change priority of a to do item.
+
+# REFLECTIONS
+# -------------------------------------------------------
+1. How long did you spend working on this project?
+
+It took me about 15 hours.
+
+
+2. What was the most rewarding challenge you conquered?
+
+it took me sometime to understand the code. Once I uderstood the code the tasks became easy.
+3. What two additional features did you build? Why?
+
+I like the terminal-table gem so I decided to do something with it and I think people ten to chaneg priorities quite often so I thought the change periority would be useful.
+
+4. Where do you still have room to grow?
+
+I think I can get better at using Ruby syntax. Looking at the starter code I noticed that Ruby allows a lot of syntax to be written on a single line.
