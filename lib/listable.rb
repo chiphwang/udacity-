@@ -38,5 +38,4 @@ module Listable
 
 
 
-
 end

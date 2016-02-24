@@ -1,11 +1,14 @@
 class LinkItem
   include Listable
-  attr_reader :description, :site_name
+  attr_reader :description, :site_name, :type
+
+@@links=[]
 
   def initialize(url, options={})
     @description = url
     @site_name = options[:site_name]
-    @type="Link"
+    @type="link"
+    @@links << self
   end
 
 =begin
@@ -14,11 +17,15 @@ class LinkItem
   end
 =end
 
+def self.all
+  @@links
+end
+
   def format_name
     @site_name ? @site_name : ""
   end
 
   def details
-    format_description(@description,@type) + "site name: " + format_name + "Link"
+    format_description(@description,@type) + "site name: " + format_name
   end
 end
