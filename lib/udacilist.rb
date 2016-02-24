@@ -36,6 +36,9 @@ class UdaciList
 
 
   def delete(index)
+    if index > @items.length
+      raise UdaciListErrors::IndexExceedsListSize, "'#{index}' ExceedsListSize"
+    end
     @items.delete_at(index - 1)
   end
 

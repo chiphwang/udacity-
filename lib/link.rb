@@ -5,6 +5,7 @@ class LinkItem
   def initialize(url, options={})
     @description = url
     @site_name = options[:site_name]
+    @type="Link"
   end
 
 =begin
@@ -18,6 +19,6 @@ class LinkItem
   end
 
   def details
-    format_description(@description) + "site name: " + format_name
+    format_description(@description,@type) + "site name: " + format_name + "Link"
   end
 end

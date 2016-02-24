@@ -1,10 +1,13 @@
 module Listable
   # Listable methods go here
 
-  def format_description(description)
-   "#{description}".ljust(30)
+  def format_description(description,type)
+   "#{description}".ljust(30) + "#{type}".ljust(20)
  end
 
+ def format_type(type)
+   "#{type}".rjust(10)
+ end
 
  def format_date(options={})
    if !options[:due] && !options[:start_date]
@@ -32,5 +35,8 @@ module Listable
    value = "" if !@priority
    return value
  end
+
+
+
 
 end
