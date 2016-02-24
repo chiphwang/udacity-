@@ -1,5 +1,5 @@
 class UdaciList
-
+  include Listable
   attr_reader :title, :items
 
   def initialize(options={})
@@ -21,7 +21,6 @@ class UdaciList
  end
 
 
-
   def table_filter(search_type)
     @rows = []
     counter=0
@@ -33,40 +32,24 @@ class UdaciList
             @tr << item.type
 
             if item.type == "event"
-              @tr << item.start_date
-              @tr << item.end_date
+              @date1=format_date({start_date: item.start_date})
+              @date2=format_date({end_date: item.end_date})
+              @tr << @date1
+              @tr << item.end_date.strftime("%D") if item.end_date
             elsif item.type == "todo"
-              @tr << item.due
+              @date1=format_date({due: item.due })
+              @tr << @date1
               @tr << item.priority
-
             elsif item.type == "link"
               @tr << item.site_name
-       end
+            end
        @rows << @tr
-     end
-
       end
+    end
       print_tables(search_type,@rows)
-   end
-
-
-
-
-def print_tables(type,rows)
-  @type1 = type
-  @rows1 = rows
-
-  if type == "event"
-  table = Terminal::Table.new :title => @type1, :headings => ['Description', 'ID', 'Type',' Start Date', 'End Date'], :rows => @rows1
-  elsif type == "todo"
-   table = Terminal::Table.new :title => @type1, :headings => ['Description', 'ID', 'Type','Due Day and Time' ,'Priority'], :rows => @rows1
-  elsif type == "link"
-     table=Terminal::Table.new :title => @type1, :headings => ['Description', 'ID', 'Type','Link'], :rows => @rows1
-   end
-  puts table
-  puts " "
-  puts " "
 end
+
+
 
   def add(type, description, options={})
       @type=type

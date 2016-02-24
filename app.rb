@@ -49,8 +49,10 @@ new_list.all
 # ------------------------
 new_list.filter("event")
 
-# New Feature #1
+# New Feature #1 (search by type and put in a table)
 
 new_list.table_filter("event")
 new_list.table_filter("todo")
 new_list.table_filter("link")
+
+# New Feature #2 (change priortity of a todo)
