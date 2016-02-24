@@ -12,13 +12,24 @@ class UdaciList
   def add(type, description, options={})
       @type=type
       @type = @type.downcase
-  #  if @type != "todo" && @type !="event" && @type !="link"
-  #      raise UdaciListErrors::InvalidItemType, "InvalidItemType..."
-  #  end
-    @items.push TodoItem.new(description, options) if type == "todo"
-    @items.push EventItem.new(description, options) if type == "event"
-    @items.push LinkItem.new(description, options) if type == "link"
+
+     if @type != "todo" && @type !="event" && @type !="link"
+      raise UdaciListErrors::InvalidItemType, "'#{type}' InvalidItemType..."
+     end
+
+    if options[:priority]
+        if options[:priority] != "high" && options[:priority] != "medium" && options[:priority] != "low"
+     raise UdaciListErrors:: InvalidPriorityValue, " ''#{options[:priority]}' is InvalidPriorityValue..."
    end
+ end
+
+
+   @items.push TodoItem.new(description, options) if type == "todo"
+   @items.push EventItem.new(description, options) if type == "event"
+   @items.push LinkItem.new(description, options) if type == "link"
+ end
+
+
 
 
 
@@ -36,4 +47,6 @@ class UdaciList
       puts "#{position + 1}) #{item.details}"
     end
   end
+
+
 end

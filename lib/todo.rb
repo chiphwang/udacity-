@@ -37,4 +37,6 @@ class TodoItem
     format_date({due: @due}) +
     format_priority(@priority)
   end
+
+  
 end
