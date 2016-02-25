@@ -22,48 +22,45 @@ class UdaciList
 
 
   def table_filter(search_type)
-    @rows = []
+    rows = []
     counter=0
     @items.each_with_index do |item, counter1|
         if item.type == search_type
-            @tr=[]
-            @tr << item.description
-            @tr << counter1
-            @tr << item.type
+            tr=[]
+            tr << item.description
+            tr << counter1
+            tr << item.type
 
             if item.type == "event"
-              @date1=format_date({start_date: item.start_date})
-              @date2=format_date({end_date: item.end_date})
-              @tr << @date1
-              @tr << item.end_date.strftime("%D") if item.end_date
+              date1=format_date({start_date: item.start_date})
+              date2=format_date({end_date: item.end_date})
+              tr << date1
+              tr << item.end_date.strftime("%D") if item.end_date
             elsif item.type == "todo"
-              @date1=format_date({due: item.due })
-              @tr << @date1
-              @tr << item.priority
+              date1=format_date({due: item.due })
+              tr << date1
+              tr << item.priority
             elsif item.type == "link"
-              @tr << item.site_name
+              tr << item.site_name
             end
-       @rows << @tr
+       rows << tr
       end
     end
-      print_tables(search_type,@rows)
+      print_tables(search_type,rows)
 end
 
   def change_priority(title,priority)
-        @title=title
-        @priority=priority
         @items.each do |item|
-          if item.description == @title
-            item.priority = @priority
+          if item.description == title
+            item.priority = priority
           end
         end
       end
 
   def add(type, description, options={})
-      @type=type
-      @type = @type.downcase
+      type = type.downcase
 
-     if @type != "todo" && @type !="event" && @type !="link"
+     if type != "todo" && type !="event" && type !="link"
       raise UdaciListErrors:: InvalidItemType, "'#{type}' InvalidItemType..."
      end
 
